@@ -312,9 +312,22 @@
             .column.dujourcom {
                 width: 30%;
             }
+            
+
             .column.socials {
                 width: 25%;
             }
+            .column.socials .column {
+                width: 100%;
+            }
+            .column.twitter, .column.instagram {
+                height: 250px;
+            }
+            .column.tumblr {
+                height: 300px;
+            }
+
+
 
             .label-container {
                 position: absolute;
@@ -432,7 +445,23 @@
                             <div class="label">Dujour.com</div>
                         </div>
                     </div>
-                    <div class="column socials"></div>
+                    <div class="column socials">
+                        <div class="column twitter">
+                            <div class="label-container">
+                                <div class="label">Twitter</div>
+                            </div>
+                        </div>
+                        <div class="column instagram">
+                            <div class="label-container">
+                                <div class="label">Instagram</div>
+                            </div>
+                        </div>
+                        <div class="column tumblr">
+                            <div class="label-container">
+                                <div class="label">Tumblr</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row second">
                     <div class="column elle2011 whitebg">
@@ -502,22 +531,84 @@
             // http://api.tumblr.com/v2/blog/sjstest.tumblr.com/posts/photo?api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback
             function tumblrPostsCallback(data) {
                 var i, posts, firstTag
+                console.log(data)
                 posts = data.response.posts
-                firstTag = posts[0].tags[0]
-                $('.' + firstTag).append('<div class="image-container scrolling">')
+                if (posts.length > 0) {
+                    firstTag = posts[0].tags[0]
+
+                    if (!$('.' + firstTag + ' .image-container').is('*')) {
+                        $('.' + firstTag).data('tag', firstTag)
+                        $('.' + firstTag).data('offset', 0)
+                        $('.' + firstTag).data('total', data.response.total_posts)
+                        $('.' + firstTag).append('<div class="image-container scrolling">')                    
+                    }
+                    
+                    for (i=0;i<posts.length;i++) { 
+                        // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
+                        $('.' + firstTag + ' .image-container').append('<img src="' + posts[i].photos[0].alt_sizes[0].url + '">')
+                        if (firstTag == 'about') {
+                            $('.' + firstTag).append(posts[i].caption)
+                        }
+                        // Take the first tag, assume that's the class name of the content section
+                        // Then add all post photos (original size, this might be an issue)
+                    }
+                    $('.' + firstTag + ' .image-container').delay(300).removeClass('loading')
+                    // remove loading state from infinite scroll
+
+                    // $('.' + firstTag + ' .scrolling').perfectScrollbar()                                    
+                }
+            }
+            function tumblrWidgetCallback(data) {
+                var i, posts
+                posts = data.response.posts
+                console.log(posts)
+                $('.tumblr').append('<div class="image-container scrolling">') 
                 for (i=0;i<posts.length;i++) { 
                     // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
-                    $('.' + firstTag + ' .image-container').append('<img src="' + posts[i].photos[0].alt_sizes[0].url + '">')
-                    console.log(posts[i].photos)
-                    if (firstTag == 'about') {
-                        $('.' + firstTag).append(posts[i].caption)
-                    }
+                    $('.tumblr .image-container').append(
+                        '<a href="' + posts[i].post_url +'"><img src="' + posts[i].photos[0].alt_sizes[0].url + '"></a>'
+                    )
                     // Take the first tag, assume that's the class name of the content section
                     // Then add all post photos (original size, this might be an issue)
                 }
-                // $('.' + firstTag + ' .scrolling').perfectScrollbar()                
+            }
+            function instagramWidgetCallback(data) {
+                var i, posts
+                posts = data.data
+                console.log(posts)
+                $('.instagram').append('<div class="image-container scrolling">') 
+                for (i=0;i<posts.length;i++) { 
+                    // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
+                    $('.instagram .image-container').append(
+                        '<a href="' + posts[i].link +'"><img src="' + posts[i].images.low_resolution.url + '"></a>'
+                    )
+                    // Take the first tag, assume that's the class name of the content section
+                    // Then add all post photos (original size, this might be an issue)
+                }
             }
             $(function() {
+                //infinite scroll for scrolling sections
+                $( ".scrolling" ).scroll(function(e) {
+                    if (
+                        !$(this).hasClass('loading') 
+                        && !$(this).hasClass('loading') 
+                        && $(this).scrollTop() > this.scrollHeight - $(this).height() - 300
+                    ) {
+                        $(this).addClass('loading')
+                        var column = $(this).parent()
+                        var offset = parseInt(column.data('offset')) + 20
+                        column.data('offset', offset) //set updated offset
+                        var tag = column.data('tag')
+                        if (offset > parseInt(column.data('total'))) {
+                            $(this).addClass('done')
+                        }
+                        $('body').append(
+                            unescape('%3Cscript src="http://api.tumblr.com/v2/blog/stephaniejonesstudio.tumblr.com/posts/photo?api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback&tag=' + tag + '&offset=' + offset + '"%3E%3C/script%3E')
+                        ) 
+                        console.log(e)                    
+                    }
+
+                });
                 //add perfect scrolling to sections
                 //$('.scrolling').perfectScrollbar()                
             })
@@ -531,6 +622,16 @@
                     unescape('%3Cscript src="http://api.tumblr.com/v2/blog/stephaniejonesstudio.tumblr.com/posts/photo?api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback&tag=' + tags[i] + '"%3E%3C/script%3E')
                 )                
             }
+
+
+            document.write(
+                unescape('%3Cscript src="http://api.tumblr.com/v2/blog/meandmissjones.tumblr.com/posts/photo?api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrWidgetCallback"%3E%3C/script%3E')
+            )                
+            //https://api.instagram.com/v1/users/5995815/media/recent?callback=instagramWidgetCallback&client_id=58932edd9e9a4d29ab150ab619390876
+            document.write(
+                unescape('%3Cscript src="https://api.instagram.com/v1/users/5995815/media/recent?callback=instagramWidgetCallback&client_id=58932edd9e9a4d29ab150ab619390876"%3E%3C/script%3E')
+            )                
+
         </script>
 
         {block:IfGoogleAnalyticsID}
