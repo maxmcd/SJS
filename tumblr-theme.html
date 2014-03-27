@@ -44,7 +44,7 @@
         <link rel="shortcut icon" href="{Favicon}">
         <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
-        
+
         <link rel="stylesheet" href="http://static.tumblr.com/vr9xgox/PuGmmhqcs/normalize.css">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
@@ -54,7 +54,7 @@
         <!--[if lt IE 9]>
                 <script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script>
         <![endif]-->
-
+        <link href='http://fonts.googleapis.com/css?family=Oswald:400' rel='stylesheet' type='text/css'>
         <style>
             /* Hide tumblr controls */
             #tumblr_controls {
@@ -140,9 +140,11 @@
             #header {
                 text-align: right;
                 border-bottom: 1px solid #6b6b6b;
+                /*margin-top: 10px;*/
             }
             .logo {
-                height: 30px;
+                height: 23px;
+                margin: 0 5px 0 0;
             }
             .blog-title h1 {
                 display: inline;
@@ -155,7 +157,7 @@
             }
             .social {
                 padding: 10px 10px 0 0;
-                display: inline;
+                display: inline-block;
             }
             .social a {
                 font-size: 20px;
@@ -165,15 +167,17 @@
             .blog-title h1 a {
                 text-decoration: none;
             }
-            nav.nav-menu ul li {
-                display: inline;
+            nav.nav-menu {
+                padding-left: 3px;
+                font-size: 17px;
+                border-left: 1px solid {LinkColor};
+            }
+            nav.nav-menu ul li, nav.nav-menu {
+                display: inline-block;
             }
             nav.nav-menu ul {
                 display: inline;
                 padding: 0px;
-            }
-            nav.nav-menu {
-                display: inline;
             }
             body {
                 background: {BackgroundColor};
@@ -262,7 +266,7 @@
             }
 
             .row {
-                padding-bottom: 5px;
+                padding-top: 10px;
             }
             .row:before, .row:after {
                 content: " ";
@@ -278,19 +282,28 @@
             .row.third {
                 height: auto;
             }
+            .row > .column:not(:last-of-type) {
+                margin-right: 1%;
+            }
+
+            .row.second .image-container, .row.third .illustrations .image-container {
+                padding: 0 13px;
+            }
 
             .column {
                 float: left;
                 position: relative;
                 min-height: 1px;
-                width: 33.333333%;
+                width: 32.6666667%;
                 height: 100%;
+                text-align: center;
+                overflow: hidden;
                 /*padding-left: 15px;
                 padding-right: 15px;*/
             }
             .column .scrolling {
-                /*overflow: hidden;*/
-                overflow-y: auto;
+                overflow: hidden;
+                /*overflow-y: auto;*/
                 position: relative;
                 height: 100%;
             }
@@ -307,29 +320,45 @@
             }
 
             .column.magazines {
-                width: 45%;
+                width: 44.1%;
             }
             .column.dujourcom {
-                width: 30%;
+                width: 29.4%;
+            }
+            .column.socials {
+                width: 24.5%;
+            }
+
+            .column.elle2011 {
+                width: 29%;
+            }
+            .column.elle2011ac {
+                width: 40%;
+            }
+            .column.elle2010 {
+                width: 29%;
             }
             
-
-            .column.socials {
-                width: 25%;
-            }
             .column.socials .column {
                 width: 100%;
             }
-            .column.twitter, .column.instagram {
-                height: 250px;
+            .column.twitter {
+                height: 200px;
+            }
+            .column.instagram {
+                height: 280px;
             }
             .column.tumblr {
-                height: 300px;
+                height: 320px;
             }
 
-
+            .instagram img {
+                /*height: 100%;*/
+            }
 
             .label-container {
+                font-family: 'Oswald', sans-serif;
+                font-size: 15px;
                 position: absolute;
                 width: 100%;
                 top: 0px;
@@ -337,17 +366,16 @@
                 z-index: 2;
             }
             .label-container .label {
-                background-color: #212121;
+                background-color: rgba(33, 33, 33, 0.8);
                 position: relative;
                 display: inline;
-                padding: 2px 20px;
-                line-height: 22px;
+                padding: 0px 20px;
                 text-transform: uppercase;
                 border-radius: 0px;
             }
             .label-container .label:before {
                 border: solid;
-                border-color: #212121 transparent;
+                border-color: rgba(33, 33, 33, 0.8) transparent;
                 border-width: 10px 10px 0 10px;
                 top: 22px;
                 content: "";
@@ -358,10 +386,74 @@
             }
 
             .column.about {
-                width: 45%;
+                width: 44%;
+                background-color: black;
+                text-align: left;
+                font-size: 14px;
+            }
+            .column.about p {
+                padding: 0px 10px;
             }
             .column.illustrations {
                 width: 55%;
+            }
+
+            .ps-container .ps-scrollbar-y-rail {
+                opacity: 1 !important;
+                display: block !important;
+            }
+
+            .nav-button {
+                position: fixed;
+                bottom: 8px;
+                right: 8px;
+                font-size: 30px;
+                background-color: rgb(150, 150, 150);
+                padding: 5px;
+                border-radius: 7px;
+                line-height: 29px;
+                cursor: pointer;
+                z-index: 10;
+            }
+            .nav-button:hover {
+                color: white;
+            }
+
+            @media (min-width: 1200px) { #page { width: 1100px; } }
+            @media (min-width: 1300px) { #page { width: 1200px; } }
+            @media (min-width: 1400px) { #page { width: 1300px; } }
+
+            @media (max-width: 768px) { 
+                body, html, #page, #posts, .column {
+                    height: 100%;
+                }
+                .row.top, .row.second {
+                    height: 300% !important;
+                }
+                .row.top > .column, .row.second > .column {
+                    height: 33.3333%;
+                }
+
+                .row.top > .column.socials > .column {
+                    height: 33.3333%;
+                }
+
+                .row.third {
+                    height: 200%;
+                }
+                .row.third .column {
+                    height: 50%;
+                }
+
+                .column {
+
+                    width: 100% !important;
+                    margin-bottom: 10px;
+                }
+                #page {
+                    width: 100% !important;
+                }
+
             }
 
             /* Custom CSS */
@@ -371,6 +463,11 @@
     <body data-urlencoded-name="{URLEncodedName}" class="{select:Layout}{block:IndexPage} index-page{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{/block:SearchPage}">
 
         <section id="page">
+
+            <div class="nav-button">
+                <i class="fa fa-arrow-down"></i>
+            </div>
+
             <div class="header-wrapper
                 {block:HideTitle}{block:HideDescription}no-title-desc {/block:HideDescription}{/block:HideTitle}
                 {block:HideHeaderImage}no-image {/block:HideHeaderImage}
@@ -442,7 +539,7 @@
                     </div>
                     <div class="column dujourcom">
                         <div class="label-container">
-                            <div class="label">Dujour.com</div>
+                            <div class="label">Dujour.com 2012-Present</div>
                         </div>
                     </div>
                     <div class="column socials">
@@ -483,7 +580,7 @@
                 <div class="row third">
                     <div class="column illustrations whitebg">
                         <div class="label-container">
-                            <div class="label">Illustrations</div>
+                            <div class="label">Photo Illustrations</div>
                         </div>
                     </div>
                     <div class="column about">
@@ -536,57 +633,84 @@
                 if (posts.length > 0) {
                     firstTag = posts[0].tags[0]
 
-                    if (!$('.' + firstTag + ' .image-container').is('*')) {
-                        $('.' + firstTag).data('tag', firstTag)
-                        $('.' + firstTag).data('offset', 0)
-                        $('.' + firstTag).data('total', data.response.total_posts)
-                        $('.' + firstTag).append('<div class="image-container scrolling">')                    
-                    }
-                    
-                    for (i=0;i<posts.length;i++) { 
-                        // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
-                        $('.' + firstTag + ' .image-container').append('<img src="' + posts[i].photos[0].alt_sizes[0].url + '">')
-                        if (firstTag == 'about') {
-                            $('.' + firstTag).append(posts[i].caption)
+                    if (firstTag == 'about') {
+                        $('.' + firstTag).append('<img src="' + posts[0].photos[0].alt_sizes[0].url + '">')
+                        $('.' + firstTag).append(posts[0].caption)
+                    } else {
+                        if (!$('.' + firstTag + ' .image-container').is('*')) {
+                            $('.' + firstTag).data('tag', firstTag)
+                            $('.' + firstTag).data('offset', 0)
+                            $('.' + firstTag).data('total', data.response.total_posts)
+                            $('.' + firstTag).append('<div class="image-container scrolling">')                    
                         }
-                        // Take the first tag, assume that's the class name of the content section
-                        // Then add all post photos (original size, this might be an issue)
-                    }
-                    $('.' + firstTag + ' .image-container').delay(300).removeClass('loading')
-                    // remove loading state from infinite scroll
+                        
+                        for (i=0;i<posts.length;i++) { 
+                            // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
+                            $('.' + firstTag + ' .image-container').append('<img src="' + posts[i].photos[0].alt_sizes[0].url + '">')
+                            
+                            // Take the first tag, assume that's the class name of the content section
+                            // Then add all post photos (original size, this might be an issue)
+                        }
+                        $('.' + firstTag + ' .image-container').delay(300).removeClass('loading')
+                        // remove loading state from infinite scroll
 
-                    // $('.' + firstTag + ' .scrolling').perfectScrollbar()                                    
+                        // $('.' + firstTag + ' .scrolling').perfectScrollbar()                                    
+                    }
                 }
             }
             function tumblrWidgetCallback(data) {
                 var i, posts
                 posts = data.response.posts
-                console.log(posts)
-                $('.tumblr').append('<div class="image-container scrolling">') 
-                for (i=0;i<posts.length;i++) { 
+                // console.log(posts)
+                // $('.tumblr').append('<div class="image-container scrolling">') 
+                // for (i=0;i<posts.length;i++) { 
                     // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
-                    $('.tumblr .image-container').append(
-                        '<a href="' + posts[i].post_url +'"><img src="' + posts[i].photos[0].alt_sizes[0].url + '"></a>'
+                    $('.tumblr').append(
+                        '<a target="_blank" href="' + posts[0].post_url +'"><img src="' + posts[0].photos[0].alt_sizes[0].url + '"></a>'
                     )
                     // Take the first tag, assume that's the class name of the content section
                     // Then add all post photos (original size, this might be an issue)
-                }
+                // }
             }
             function instagramWidgetCallback(data) {
                 var i, posts
                 posts = data.data
                 console.log(posts)
-                $('.instagram').append('<div class="image-container scrolling">') 
-                for (i=0;i<posts.length;i++) { 
-                    // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
-                    $('.instagram .image-container').append(
-                        '<a href="' + posts[i].link +'"><img src="' + posts[i].images.low_resolution.url + '"></a>'
-                    )
-                    // Take the first tag, assume that's the class name of the content section
-                    // Then add all post photos (original size, this might be an issue)
+                $('.instagram').append('<a target="_blank" href="' + posts[0].link +'"><img src="' + posts[0].images.low_resolution.url + '"></a>')
+                // $('.instagram').append('<div class="image-container scrolling">') 
+                // for (i=0;i<posts.length;i++) { 
+                //     // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
+                //     $('.instagram .image-container').append(
+                //         '<a href="' + posts[i].link +'"><img src="' + posts[i].images.low_resolution.url + '"></a>'
+                //     )
+                //     // Take the first tag, assume that's the class name of the content section
+                //     // Then add all post photos (original size, this might be an issue)
+                // }
+            }
+            function scrollToNextElement(elementGroup) {
+                for (var i=0;i<elementGroup.length;i++){
+                    console.log('Element: ')
+                    console.log(elementGroup.eq(i))
+                    console.log($(window).scrollTop())
+                    console.log(elementGroup.eq(i).offset().top)
+                    console.log('----')
+                    if ($(window).scrollTop() < elementGroup.eq(i).offset().top - 10) {
+                        $('html, body').animate({
+                                scrollTop: elementGroup.eq(i).offset().top
+                            }, 500);
+                        break
+                    }
                 }
             }
             $(function() {
+
+                $('.nav-button').click(function() {
+                    if ($(window).width() > 768) {
+                        scrollToNextElement($('.row'))
+                    } else {
+                        scrollToNextElement($('.column'))
+                    }
+                })
                 //infinite scroll for scrolling sections
                 $( ".scrolling" ).scroll(function(e) {
                     if (
@@ -610,10 +734,14 @@
 
                 });
                 //add perfect scrolling to sections
-                //$('.scrolling').perfectScrollbar()                
+                $('.scrolling').perfectScrollbar()                
             })
+            $( window ).load(function() {
+                $('.illustrations').height($('.about').height())
+                $('.scrolling').perfectScrollbar('update');
+            });
 
-            var tags = ["elle2010", "about", "elle2011", "elle2011ac", "dujourcom", "magazines"]
+            var tags = ["elle2010", "about", "elle2011", "elle2011ac", "dujourcom", "magazines", "illustrations"]
             // take all the content section names and make api calls to request posts with those tags
             // write those posts
             // This returns 20 posts by default
