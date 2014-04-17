@@ -1,0 +1,414 @@
+/*
+*= require perfect-scrollbar
+*/
+
+$linkcolor: #969696;
+
+$bodyfont: 'Helvetica';
+
+$BackgroundColor: #000;
+
+$titlecolor: #ffffff;
+
+/* Hide tumblr controls */
+#tumblr_controls {
+    display: none !important;
+}
+
+@font-face {
+    font-family: 'DidotDisplay';
+    src: url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_0_0.eot);
+    src: local('☺'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_0_0.woff) format('woff'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_0_0.ttf) format('truetype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_0_0.svg) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DharmaGothicC-Bold';
+    src: url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_1_0.eot);
+    src: local('☺'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_1_0.woff) format('woff'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_1_0.ttf) format('truetype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_1_0.svg) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DharmaGothicC-Thin';
+    src: url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_2_0.eot);
+    src: local('☺'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_2_0.woff) format('woff'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_2_0.ttf) format('../truetype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_2_0.svg) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DharmaGothicC-Light';
+    src: url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_3_0.eot);
+    src: local('☺'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_3_0.woff) format('woff'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_3_0.ttf) format('truetype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_3_0.svg) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DharmaGothicE-Light';
+    src: url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_4_0.eot);
+    src: local('☺'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_4_0.woff) format('woff'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_4_0.ttf) format('truetype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/234ECA_4_0.svg) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DharmaGothicE-Regular';
+    src: url(http://dujour.com/wp-content/themes/dujour/css/../fonts/257017_0_0.eot);
+    src: local('☺'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/257017_0_0.woff) format('woff'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/257017_0_0.ttf) format('truetype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/257017_0_0.svg) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DuJourCon';
+    src: url(http://dujour.com/wp-content/themes/dujour/css/../fonts/Dujour-Icons.eot);
+    src: local('☺'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/Dujour-Icons.woff) format('woff'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/Dujour-Icons.ttf) format('truetype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/Dujour-Icons.svg) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DuJourUI';
+    src: url(http://dujour.com/wp-content/themes/dujour/css/../fonts/DujourUI.eot);
+    src: local('☺'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/DujourUI.woff) format('woff'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/DujourUI.ttf) format('truetype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/DujourUI.svg) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'FrutigerLTStd46LightItalic';
+    src: url(http://dujour.com/wp-content/themes/dujour/css/../fonts/frutigerltstd-lightitalic.eot);
+    src: local('☺'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/frutigerltstd-lightitalic.eot) format('embedded-opentype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/frutigerltstd-lightitalic.woff) format('woff'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/frutigerltstd-lightitalic.ttf) format('truetype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/frutigerltstd-lightitalic.svg#FrutigerLTStd46LightItalic) format('svg');
+}
+@font-face {
+    font-family: 'FrutigerLTStd47LightCondensed';
+    src: url(http://dujour.com/wp-content/themes/dujour/css/../fonts/frutigerltstd-lightcn.eot);
+    src: local('☺'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/frutigerltstd-lightcn.eot) format('embedded-opentype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/frutigerltstd-lightcn.woff) format('woff'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/frutigerltstd-lightcn.ttf) format('truetype'),url(http://dujour.com/wp-content/themes/dujour/css/../fonts/frutigerltstd-lightcn.svg#FrutigerLTStd47LightCondensed) format('svg');
+}
+
+#page {
+    width: 1000px;
+    margin: 0px auto;
+    background-color: #303030;
+    color: white;
+}
+.hide {
+    display: none !important;
+}
+#header {
+    text-align: right;
+    border-bottom: 1px solid #6b6b6b;
+    /*margin-top: 10px;*/
+}
+.logo {
+    height: 23px;
+    margin: 0 5px 0 0;
+}
+.blog-title h1 {
+    display: inline;
+    margin: 0px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+.social-bar {
+    padding: 10px 0;
+}
+.social {
+    padding: 10px 10px 0 0;
+    display: inline-block;
+    a {
+        font-size: 20px;
+        padding: 0 5px;
+        text-decoration: none;
+    }
+}
+.blog-title h1 a {
+    text-decoration: none;
+}
+nav.nav-menu {
+    padding-left: 3px;
+    font-size: 17px;
+    display: inline-block;
+    border-left: 1px solid $linkcolor;
+    ul {
+        display: inline;
+        padding: 0px;
+        li {
+            display: inline-block;
+        }
+    }
+}
+body {
+    background: $BackgroundColor ;
+    font-family: $bodyfont , "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+}
+
+h1 {
+    /*font-family: {TitleFont}, "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+    font-weight: {TitleFontWeight};*/
+    font-family: DharmaGothicC-Light, 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+a.page {
+    font-family: DharmaGothicC-Light, 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 25px;
+    padding: 5px;
+    color: $linkcolor;
+}
+
+h2, .attribution-tags {
+    font-family: $bodyfont, "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+}
+
+h1 a,
+#pagination a,
+/*.exposed-nav-wrapper li a,*/
+.sub-title,
+.search-header {
+    color: $titlecolor;
+}
+
+#pagination a.next:after {
+    border-left-color: $titlecolor;
+}
+
+#pagination a.previous:after {
+    border-right-color: $titlecolor;
+}
+
+.h-line {
+    background: $titlecolor;
+}
+
+a {
+    color: $linkcolor;
+}
+
+.link-wrapper h2 a {
+    background-color: $linkcolor;
+}
+
+.header-image {
+    background-image: url({HeaderImage});
+}
+
+.user-avatar {
+    background-color: $BackgroundColor;
+    border-color: $BackgroundColor;
+}
+
+.avatar-style-square .user-avatar {
+    -wekbit-box-shadow: 0 0 0 4px $BackgroundColor;
+    -moz-box-shadow: 0 0 0 4px $BackgroundColor;
+    box-shadow: 0 0 0 4px $BackgroundColor;
+}
+
+@media screen and (max-device-width: 568px) {
+    .header-image {
+        background-image: url({HeaderImage-1024});
+    }
+}
+
+:before, :after {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+#posts {
+    min-height: 600px;
+    width: 100%;
+}
+
+.row:before, .row:after {
+    content: " ";
+    display: table;
+}
+.row {
+    padding-top: 10px;
+    &.top {
+        height: 800px;
+    }
+    &.second {
+        height: 800px;
+    }
+    &.third {
+        height: auto;
+    }
+    > .column:not(:last-of-type) {
+        margin-right: 1%;
+    }
+}
+
+
+.row.second .image-container, .row.third .illustrations .image-container {
+    padding: 0 13px;
+}
+
+.column {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    width: 32.6666667%;
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+    .scrolling {
+        overflow: hidden;
+        /*overflow-y: auto;*/
+        position: relative;
+        height: 100%;
+    }
+    &.whitebg {
+        background-color: white;
+    }
+    img {
+        /*max-width: 100%;*/
+        width: 100%;
+        display: block;
+        margin-bottom: 5px;
+    }
+    &.magazines {
+        width: 44.1%;
+    }
+    &.dujourcom {
+        width: 29.4%;
+    }
+    &.socials {
+        width: 24.5%;
+    }
+
+    &.elle2011 {
+        width: 29%;
+    }
+    &.elle2011ac {
+        width: 40%;
+    }
+    &.elle2010 {
+        width: 29%;
+    }
+
+    &.socials .column {
+        width: 100%;
+    }
+    &.twitter {
+        height: 200px;
+    }
+    &.instagram {
+        height: 280px;
+    }
+    &.tumblr {
+        height: 320px;
+    }
+}
+
+
+
+
+
+.instagram img {
+    /*height: 100%;*/
+}
+
+.label-container {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    text-align: center;
+    z-index: 2;
+}
+.label-container .label {
+    background-color: rgba(33, 33, 33, 0.8);
+    position: relative;
+    display: inline;
+    padding: 0px 20px;
+    text-transform: uppercase;
+    border-radius: 0px;
+}
+.label-container .label:before {
+    border: solid;
+    border-color: rgba(33, 33, 33, 0.8) transparent;
+    border-width: 10px 10px 0 10px;
+    top: 22px;
+    content: "";
+    left: 50%;
+    position: absolute;
+    z-index: 99;
+    margin-left: -10px;
+}
+
+.column.about {
+    width: 44%;
+    background-color: black;
+    text-align: left;
+    font-size: 14px;
+}
+.column.about p {
+    padding: 0px 10px;
+}
+.column.illustrations {
+    width: 55%;
+    height: 783px; //placeholder to prevent overflow, js resents this on load
+}
+
+.ps-container .ps-scrollbar-y-rail {
+    opacity: 1 !important;
+    display: block !important;
+}
+
+.nav-button {
+    position: fixed;
+    bottom: 8px;
+    right: 8px;
+    font-size: 30px;
+    background-color: rgb(150, 150, 150);
+    padding: 5px;
+    border-radius: 7px;
+    line-height: 29px;
+    cursor: pointer;
+    z-index: 10;
+}
+.nav-button:hover {
+    color: white;
+}
+
+@media (min-width: 1200px) { #page { width: 1100px; } }
+@media (min-width: 1300px) { #page { width: 1200px; } }
+@media (min-width: 1400px) { #page { width: 1300px; } }
+
+@media (max-width: 768px) { 
+    body, html, #page, #posts, .column {
+        height: 100%;
+    }
+    .row.top, .row.second {
+        height: 300% !important;
+    }
+    .row.top > .column, .row.second > .column {
+        height: 33.3333%;
+    }
+
+    .row.top > .column.socials > .column {
+        height: 33.3333%;
+    }
+
+    .row.third {
+        height: 200%;
+    }
+    .row.third .column {
+        height: 50%;
+    }
+
+    .column {
+
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+    #page {
+        width: 100% !important;
+    }
+
+}

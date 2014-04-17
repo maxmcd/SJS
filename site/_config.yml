@@ -9,8 +9,11 @@ encoding:    nil
 
 assets:
   js_compressor:  yui
-  css_compressor:  yui
-  baseurl: //staging.flappybird.io/assets/
+  css_compressor:  sass
+  # baseurl: //staging.flappybird.io/assets/
 
 baseurl:     /
 url:         http://flappybird.io
+
+
+BackgroundColor: '#ffffff'
