@@ -1,0 +1,16 @@
+source: .
+destination: ./_site
+layouts:     ./_layouts
+include:     []
+exclude:     ['Gemfile','Gemfile.lock','readme.md']
+gems:        []
+timezone:    nil
+encoding:    nil
+
+assets:
+  js_compressor:  yui
+  css_compressor:  yui
+  baseurl: //staging.flappybird.io/assets/
+
+baseurl:     /
+url:         http://flappybird.io
