@@ -92,7 +92,7 @@ $titlecolor: #ffffff;
     display: none !important;
 }
 #header {
-    text-align: right;
+    text-align: left;
     border-bottom: 1px solid #6b6b6b;
     /*margin-top: 10px;*/
 }
@@ -227,7 +227,7 @@ box-sizing: border-box;
 .row {
     padding-top: 10px;
     &.top {
-        height: 800px;
+        height: 812px;
     }
     &.second {
         height: 800px;
@@ -237,6 +237,84 @@ box-sizing: border-box;
     }
     > .column:not(:last-of-type) {
         margin-right: 1%;
+    }
+    &.magazines-big {
+        .magazine {
+            width: 100%;
+            height: 20px;
+            text-align: center;
+            color: black;
+            background-color: white;
+            position: relative;
+            text-transform: uppercase;
+            P {
+                display: inline;
+                margin: 0px;
+            }
+        }
+        .magazine:hover {
+            margin-bottom: 20px;
+        }
+        .magazine:before {
+            border: solid;
+            border-width: 10px 10px 0 10px;
+            top: 20px;
+            border-color: white transparent;
+            content: "";
+            left: 50%;
+            position: absolute;
+            // z-index: 99;
+            margin-left: -10px;
+        }
+        .magazine:nth-child(1) {
+            background-color: lighten(#3f3f47, 10%);
+            &:before {
+                border-color: lighten(#3f3f47, 10%) transparent;
+            }
+        }
+        .magazine:nth-child(2) {
+            background-color: lighten(#3f3f47, 20%);
+            &:before {
+                border-color: lighten(#3f3f47, 20%) transparent;
+            }
+        }
+        .magazine:nth-child(3) {
+            background-color: lighten(#3f3f47, 30%);
+            &:before {
+                border-color: lighten(#3f3f47, 30%) transparent;
+            }
+        }
+        .magazine:nth-child(4) {
+            background-color: lighten(#3f3f47, 40%);
+            &:before {
+                border-color: lighten(#3f3f47, 40%) transparent;
+            }
+        }
+        .magazine:nth-child(5) {
+            background-color: lighten(#3f3f47, 50%);
+            &:before {
+                border-color: lighten(#3f3f47, 50%) transparent;
+            }
+        }
+        .magazine:nth-child(6) {
+            background-color: lighten(#3f3f47, 60%);
+            &:before {
+                border-color: lighten(#3f3f47, 60%) transparent;
+            }
+        }
+        .magazine:nth-child(7) {
+            background-color: lighten(#3f3f47, 70%);
+            &:before {
+                border-color: lighten(#3f3f47, 70%) transparent;
+            }
+        }
+        .magazine:nth-child(8) {
+            background-color: lighten(#3f3f47, 80%);
+            &:before {
+                border-color: lighten(#3f3f47, 80%) transparent;
+            }
+        }
+
     }
 }
 
@@ -272,6 +350,31 @@ box-sizing: border-box;
     }
     &.magazines {
         width: 44.1%;
+        img {
+            cursor: pointer;
+        }
+        .horizontal {
+            text-align: left;
+            overflow: hidden;
+            white-space: nowrap;
+            height: 170px;
+            div {
+                display: inline-block;
+                position: relative;
+                span {
+                    text-align: center;
+                    top: 51px;
+                    text-transform: uppercase;
+                    width: 100%;
+                    position: absolute;
+                }
+            }
+            img {
+                display: inline;
+                width: 130px;
+                cursor: pointer;
+            }
+        }
     }
     &.dujourcom {
         width: 29.4%;
@@ -294,13 +397,30 @@ box-sizing: border-box;
         width: 100%;
     }
     &.twitter {
-        height: 200px;
+        cursor: pointer;
+        height: 273px;
+        .text {
+            position: absolute;
+            word-wrap: break-word;
+            width: 175px;
+            height: 160px;
+            top: 50px;
+            text-align: center;
+            text-transform: uppercase;
+            left: 50%;
+            margin-left: -87px;
+            line-height: 24px;
+        }
+        img {
+            width: 245px;
+            margin: 0px auto 5px auto;
+        }
     }
     &.instagram {
-        height: 280px;
+        height: 245px;
     }
     &.tumblr {
-        height: 320px;
+        height: 294px;
     }
 }
 
@@ -356,6 +476,10 @@ box-sizing: border-box;
 }
 
 .ps-container .ps-scrollbar-y-rail {
+    opacity: 1 !important;
+    display: block !important;
+}
+.ps-container .ps-scrollbar-x-rail {
     opacity: 1 !important;
     display: block !important;
 }

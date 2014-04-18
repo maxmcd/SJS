@@ -10,7 +10,7 @@ encoding:    nil
 assets:
   js_compressor:  yui
   css_compressor:  sass
-  # baseurl: //staging.flappybird.io/assets/
+  baseurl: assets/
 
 baseurl:     /
 url:         http://flappybird.io

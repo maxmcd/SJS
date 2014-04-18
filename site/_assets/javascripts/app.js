@@ -1,4 +1,5 @@
 //= require perfect-scrollbar-with-mousewheel.min
+//= require twitterfetcher
 
 // http://api.tumblr.com/v2/blog/sjstest.tumblr.com/posts/photo?api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback
 function tumblrPostsCallback(data) {
@@ -11,6 +12,35 @@ function tumblrPostsCallback(data) {
         if (firstTag == 'about') {
             $('.' + firstTag).append('<img src="' + posts[0].photos[0].alt_sizes[0].url + '">')
             $('.' + firstTag).append(posts[0].caption)
+        } else if (firstTag == 'magazines') {
+            for (i=0;i<posts.length;i++) { 
+                if (i===0) {
+                   $('.' + firstTag).append(
+                       '<img src="' + 
+                       posts[i].photos[0].alt_sizes[0].url + 
+                       '">'
+                   )
+                }
+                // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
+                $('.' + firstTag + ' .horizontal').append(
+                    '<div><span>' +
+                    posts[i].caption +
+                    '</span><img src="' + 
+                    posts[i].photos[0].alt_sizes[2].url + 
+                    '" data-large="' +
+                    posts[i].photos[0].alt_sizes[0].url + 
+                    '" data-title="' +
+                    '"></div>'
+                )
+                $('.magazines-big').append(
+                    '<div class="magazine">' +
+                    posts[i].caption +
+                    '</div>'
+                )
+                
+                // Take the first tag, assume that's the class name of the content section
+                // Then add all post photos (original size, this might be an issue)
+            }
         } else {
             if (!$('.' + firstTag + ' .image-container').is('*')) {
                 $('.' + firstTag).data('tag', firstTag)
@@ -86,6 +116,10 @@ $(function() {
             scrollToNextElement($('.column'))
         }
     })
+
+    $('.magazines .horizontal img').click(function() {
+        $('.magazines > img').attr('src', $(this).data('large'))
+    })
     //infinite scroll for scrolling sections
     $( ".scrolling" ).scroll(function(e) {
         if (
@@ -108,12 +142,15 @@ $(function() {
         }
 
     });
+
+    twitterFetcher.fetch('456957071439577089', 'tweet', 1, true);
     //add perfect scrolling to sections
-    $('.scrolling').perfectScrollbar()                
+    $('.scrolling').perfectScrollbar({suppressScrollX: true})                
+    $('.magazines .horizontal').perfectScrollbar({suppressScrollY: true})                
 })
 $(window).load(function() {
     $('.illustrations').height($('.about').height())
-    $('.scrolling').perfectScrollbar('update');
+    $('.scrolling, .horizontal').perfectScrollbar('update');
 });
 
 var tags = ["elle2010", "about", "elle2011", "elle2011ac", "dujourcom", "magazines", "illustrations"]
