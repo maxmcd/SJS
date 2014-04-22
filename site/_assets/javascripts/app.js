@@ -1,6 +1,8 @@
 //= require perfect-scrollbar-with-mousewheel.min
 //= require twitterfetcher
 
+var api_endpoint = 'http://api.tumblr.com/v2/blog/stephaniejonesstudio.tumblr.com/posts/photo?cb=' + Math.random() + '&'
+
 // http://api.tumblr.com/v2/blog/sjstest.tumblr.com/posts/photo?api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback
 function tumblrPostsCallback(data) {
     var i, posts, firstTag
@@ -13,7 +15,7 @@ function tumblrPostsCallback(data) {
             $('.' + firstTag).append('<img src="' + posts[0].photos[0].alt_sizes[0].url + '">')
             $('.' + firstTag).append(posts[0].caption)
         } else if (firstTag == 'magazines') {
-            for (i=0;i<posts.length;i++) { 
+            for (var i=0;i<posts.length;i++) { 
                 if (i===0) {
                    $('.' + firstTag).append(
                        '<img src="' + 
@@ -33,10 +35,14 @@ function tumblrPostsCallback(data) {
                     '"></div>'
                 )
                 $('.magazines-big').append(
-                    '<div class="magazine">' +
+                    '<div class="magazine number' + i + '"><div class="mag-header">' +
                     posts[i].caption +
                     '</div>'
                 )
+                for (var n=0;n<posts[i].photos.length;n++) {
+                    console.log(posts[i].photos[n].alt_sizes[0].url)
+                    $('.magazine.number' + i).append('<img src="' + posts[i].photos[n].alt_sizes[0].url + '">')
+                }
                 
                 // Take the first tag, assume that's the class name of the content section
                 // Then add all post photos (original size, this might be an issue)
@@ -136,12 +142,21 @@ $(function() {
                 $(this).addClass('done')
             }
             $('body').append(
-                unescape('%3Cscript src="http://api.tumblr.com/v2/blog/stephaniejonesstudio.tumblr.com/posts/photo?api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback&tag=' + tag + '&offset=' + offset + '"%3E%3C/script%3E')
+                unescape('%3Cscript src="' + api_endpoint + 'api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback&tag=' + tag + '&offset=' + offset + '"%3E%3C/script%3E')
             ) 
             console.log(e)                    
         }
 
     });
+
+    $('.magazine').click(function() {
+        if ($(this).hasClass('open')) {
+            $('.magazine').removeClass('open')
+        } else {
+            $('.magazine').removeClass('open')
+            $(this).addClass('open')            
+        }
+    })
 
     twitterFetcher.fetch('456957071439577089', 'tweet', 1, true);
     //add perfect scrolling to sections
@@ -159,7 +174,7 @@ var tags = ["elle2010", "about", "elle2011", "elle2011ac", "dujourcom", "magazin
 // This returns 20 posts by default
 for (var i=0;i<tags.length;i++){
     document.write(
-        unescape('%3Cscript src="http://api.tumblr.com/v2/blog/stephaniejonesstudio.tumblr.com/posts/photo?api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback&tag=' + tags[i] + '"%3E%3C/script%3E')
+        unescape('%3Cscript src="' + api_endpoint + 'api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback&tag=' + tags[i] + '"%3E%3C/script%3E')
     )                
 }
 

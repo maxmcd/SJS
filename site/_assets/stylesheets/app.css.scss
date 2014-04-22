@@ -239,79 +239,96 @@ box-sizing: border-box;
         margin-right: 1%;
     }
     &.magazines-big {
+        padding-bottom: 50px;
         .magazine {
-            width: 100%;
             height: 20px;
+            overflow: hidden;
+            &.open {
+                height: auto;
+                margin: auto auto 15px auto;
+            }
             text-align: center;
-            color: black;
-            background-color: white;
-            position: relative;
-            text-transform: uppercase;
-            P {
-                display: inline;
-                margin: 0px;
+            img {
+                display: inline-block;
+                max-width: 80%;
+                margin: 15px 0 0;                
+                max-height: 700px;
             }
-        }
-        .magazine:hover {
-            margin-bottom: 20px;
-        }
-        .magazine:before {
-            border: solid;
-            border-width: 10px 10px 0 10px;
-            top: 20px;
-            border-color: white transparent;
-            content: "";
-            left: 50%;
-            position: absolute;
-            // z-index: 99;
-            margin-left: -10px;
-        }
-        .magazine:nth-child(1) {
-            background-color: lighten(#3f3f47, 10%);
-            &:before {
-                border-color: lighten(#3f3f47, 10%) transparent;
+            .mag-header {
+                cursor: pointer;
+                width: 100%;
+                height: 20px;
+                text-align: center;
+                color: black;
+                background-color: white;
+                position: relative;
+                text-transform: uppercase;
+                P {
+                    display: inline;
+                    margin: 0px;
+                }
             }
-        }
-        .magazine:nth-child(2) {
-            background-color: lighten(#3f3f47, 20%);
-            &:before {
-                border-color: lighten(#3f3f47, 20%) transparent;
+            .mag-header:hover {
+                // margin-bottom: 20px;
             }
-        }
-        .magazine:nth-child(3) {
-            background-color: lighten(#3f3f47, 30%);
-            &:before {
-                border-color: lighten(#3f3f47, 30%) transparent;
+            .mag-header:before {
+                border: solid;
+                border-width: 10px 10px 0 10px;
+                top: 20px;
+                border-color: white transparent;
+                content: "";
+                left: 50%;
+                position: absolute;
+                // z-index: 99;
+                margin-left: -10px;
             }
-        }
-        .magazine:nth-child(4) {
-            background-color: lighten(#3f3f47, 40%);
-            &:before {
-                border-color: lighten(#3f3f47, 40%) transparent;
+            &:nth-child(1) .mag-header {
+                background-color: lighten(#3f3f47, 10%);
+                &:before {
+                    border-color: lighten(#3f3f47, 10%) transparent;
+                }
             }
-        }
-        .magazine:nth-child(5) {
-            background-color: lighten(#3f3f47, 50%);
-            &:before {
-                border-color: lighten(#3f3f47, 50%) transparent;
+            &:nth-child(2) .mag-header {
+                background-color: lighten(#3f3f47, 20%);
+                &:before {
+                    border-color: lighten(#3f3f47, 20%) transparent;
+                }
             }
-        }
-        .magazine:nth-child(6) {
-            background-color: lighten(#3f3f47, 60%);
-            &:before {
-                border-color: lighten(#3f3f47, 60%) transparent;
+            &:nth-child(3) .mag-header {
+                background-color: lighten(#3f3f47, 30%);
+                &:before {
+                    border-color: lighten(#3f3f47, 30%) transparent;
+                }
             }
-        }
-        .magazine:nth-child(7) {
-            background-color: lighten(#3f3f47, 70%);
-            &:before {
-                border-color: lighten(#3f3f47, 70%) transparent;
+            &:nth-child(4) .mag-header {
+                background-color: lighten(#3f3f47, 40%);
+                &:before {
+                    border-color: lighten(#3f3f47, 40%) transparent;
+                }
             }
-        }
-        .magazine:nth-child(8) {
-            background-color: lighten(#3f3f47, 80%);
-            &:before {
-                border-color: lighten(#3f3f47, 80%) transparent;
+            &:nth-child(5) .mag-header {
+                background-color: lighten(#3f3f47, 50%);
+                &:before {
+                    border-color: lighten(#3f3f47, 50%) transparent;
+                }
+            }
+            &:nth-child(6) .mag-header {
+                background-color: lighten(#3f3f47, 60%);
+                &:before {
+                    border-color: lighten(#3f3f47, 60%) transparent;
+                }
+            }
+            &:nth-child(7) .mag-header {
+                background-color: lighten(#3f3f47, 70%);
+                &:before {
+                    border-color: lighten(#3f3f47, 70%) transparent;
+                }
+            }
+            &:nth-child(8) .mag-header {
+                background-color: lighten(#3f3f47, 80%);
+                &:before {
+                    border-color: lighten(#3f3f47, 80%) transparent;
+                }
             }
         }
 
@@ -361,6 +378,7 @@ box-sizing: border-box;
             div {
                 display: inline-block;
                 position: relative;
+                margin-right: 5px;
                 span {
                     text-align: center;
                     top: 51px;
