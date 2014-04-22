@@ -5,7 +5,7 @@ include:     []
 exclude:     ['Gemfile','Gemfile.lock','readme.md']
 gems:        []
 timezone:    nil
-encoding:    nil
+encoding:    utf-8
 
 assets:
   js_compressor:  yui
