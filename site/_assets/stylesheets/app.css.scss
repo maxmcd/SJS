@@ -87,6 +87,8 @@ $titlecolor: #ffffff;
     margin: 0px auto;
     background-color: #303030;
     color: white;
+    margin-bottom: 50px;
+    padding: 0 10px 10px 10px;
 }
 .hide {
     display: none !important;
@@ -136,7 +138,9 @@ nav.nav-menu {
 }
 body {
     background: $BackgroundColor ;
-    font-family: $bodyfont , "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+    font-family: Oswald, sans-serif;
+
+    // font-family: $bodyfont , "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 }
 
 h1 {
@@ -239,9 +243,8 @@ box-sizing: border-box;
         margin-right: 1%;
     }
     &.magazines-big {
-        padding-bottom: 50px;
         .magazine {
-            height: 20px;
+            height: 23px;
             overflow: hidden;
             &.open {
                 height: auto;
@@ -257,7 +260,7 @@ box-sizing: border-box;
             .mag-header {
                 cursor: pointer;
                 width: 100%;
-                height: 20px;
+                height: 23px;
                 text-align: center;
                 color: black;
                 background-color: white;
@@ -274,7 +277,7 @@ box-sizing: border-box;
             .mag-header:before {
                 border: solid;
                 border-width: 10px 10px 0 10px;
-                top: 20px;
+                top: 23px;
                 border-color: white transparent;
                 content: "";
                 left: 50%;
@@ -363,22 +366,44 @@ box-sizing: border-box;
         /*max-width: 100%;*/
         width: 100%;
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
     &.magazines {
         width: 44.1%;
-        img {
+        .cover {
+            height: 80%;
+            height: calc(100% - 165px);
+            width: 100%;
+            background-size: cover;
+            background-position: 50% 50%;
             cursor: pointer;
+            .overlay {
+                display: none;
+            }
+            &:hover .overlay {
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                display: block;
+                opacity: .4;
+                line-height: 613px;
+                font-size: 50px;
+                text-transform: uppercase;
+                p {
+                    margin: 0px;
+                }
+            }
         }
         .horizontal {
             text-align: left;
             overflow: hidden;
             white-space: nowrap;
-            height: 170px;
+            height: 165px;
             div {
                 display: inline-block;
                 position: relative;
-                margin-right: 5px;
+                margin-right: 10px;
+                cursor: pointer;
                 span {
                     text-align: center;
                     top: 51px;
@@ -390,7 +415,6 @@ box-sizing: border-box;
             img {
                 display: inline;
                 width: 130px;
-                cursor: pointer;
             }
         }
     }
@@ -416,7 +440,8 @@ box-sizing: border-box;
     }
     &.twitter {
         cursor: pointer;
-        height: 273px;
+        height: 263px;
+        margin-bottom: 10px;
         .text {
             position: absolute;
             word-wrap: break-word;
@@ -435,7 +460,8 @@ box-sizing: border-box;
         }
     }
     &.instagram {
-        height: 245px;
+        height: 235px;
+        margin-bottom: 10px;
     }
     &.tumblr {
         height: 294px;
@@ -484,6 +510,7 @@ box-sizing: border-box;
     background-color: black;
     text-align: left;
     font-size: 14px;
+    font-family: Helvetica;
 }
 .column.about p {
     padding: 0px 10px;
@@ -518,8 +545,8 @@ box-sizing: border-box;
     color: white;
 }
 
-@media (min-width: 1200px) { #page { width: 1100px; } }
-@media (min-width: 1300px) { #page { width: 1200px; } }
+// @media (min-width: 1200px) { #page { width: 1100px; } }
+// @media (min-width: 1300px) { #page { width: 1200px; } }
 @media (min-width: 1400px) { #page { width: 1300px; } }
 
 @media (max-width: 768px) { 

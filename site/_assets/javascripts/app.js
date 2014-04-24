@@ -17,15 +17,16 @@ function tumblrPostsCallback(data) {
         } else if (firstTag == 'magazines') {
             for (var i=0;i<posts.length;i++) { 
                 if (i===0) {
-                   $('.' + firstTag).append(
-                       '<img src="' + 
-                       posts[i].photos[0].alt_sizes[0].url + 
-                       '">'
-                   )
+                    $('.' + firstTag).data('number', 0)
+                    $('.' + firstTag).append(
+                        '<div class="cover" style="background-image: url(' + 
+                        posts[i].photos[0].alt_sizes[0].url + 
+                        ')"><div class="overlay">' + posts[i].caption + '</div></div>'
+                    )
                 }
                 // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
                 $('.' + firstTag + ' .horizontal').append(
-                    '<div><span>' +
+                    '<div data-number="' + i + '"><span>' +
                     posts[i].caption +
                     '</span><img src="' + 
                     posts[i].photos[0].alt_sizes[2].url + 
@@ -100,11 +101,11 @@ function instagramWidgetCallback(data) {
 }
 function scrollToNextElement(elementGroup) {
     for (var i=0;i<elementGroup.length;i++){
-        console.log('Element: ')
-        console.log(elementGroup.eq(i))
-        console.log($(window).scrollTop())
-        console.log(elementGroup.eq(i).offset().top)
-        console.log('----')
+        // console.log('Element: ')
+        // console.log(elementGroup.eq(i))
+        // console.log($(window).scrollTop())
+        // console.log(elementGroup.eq(i).offset().top)
+        // console.log('----')
         if ($(window).scrollTop() < elementGroup.eq(i).offset().top - 10) {
             $('html, body').animate({
                     scrollTop: elementGroup.eq(i).offset().top
@@ -123,9 +124,30 @@ $(function() {
         }
     })
 
-    $('.magazines .horizontal img').click(function() {
-        $('.magazines > img').attr('src', $(this).data('large'))
+    $('.magazines .horizontal div').click(function() {
+        $('.magazines').data('number', $(this).data('number'))
+        $('.magazines .cover').css({'background-image': 'url(' + $(this).children('img').data('large') + ')'})
+        $('.magazines .cover .overlay').html($(this).children('span').html())
     })
+
+    $('.magazines .cover').click(function() {
+        var num = $(this).parent('.magazines').data('number')
+        $('.magazine').removeClass('open')
+        $('.magazine.number' + num).addClass('open')
+        $('html, body').animate({
+            scrollTop: $('.magazine.number' + num).offset().top
+        }, 500);
+    })
+
+    $('.magazine').click(function() {
+        if ($(this).hasClass('open')) {
+            $('.magazine').removeClass('open')
+        } else {
+            $('.magazine').removeClass('open')
+            $(this).addClass('open')            
+        }
+    })
+
     //infinite scroll for scrolling sections
     $( ".scrolling" ).scroll(function(e) {
         if (
@@ -149,15 +171,6 @@ $(function() {
 
     });
 
-    $('.magazine').click(function() {
-        if ($(this).hasClass('open')) {
-            $('.magazine').removeClass('open')
-        } else {
-            $('.magazine').removeClass('open')
-            $(this).addClass('open')            
-        }
-    })
-
     twitterFetcher.fetch('456957071439577089', 'tweet', 1, true);
     //add perfect scrolling to sections
     $('.scrolling').perfectScrollbar({suppressScrollX: true})                
@@ -168,7 +181,7 @@ $(window).load(function() {
     $('.scrolling, .horizontal').perfectScrollbar('update');
 });
 
-var tags = ["elle2010", "about", "elle2011", "elle2011ac", "dujourcom", "magazines", "illustrations"]
+var tags = ["magazines", "dujourcom", "elle2010", "about", "elle2011", "elle2011ac", "illustrations"]
 // take all the content section names and make api calls to request posts with those tags
 // write those posts
 // This returns 20 posts by default
