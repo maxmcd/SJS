@@ -16,6 +16,7 @@ function tumblrPostsCallback(data) {
             $('.' + firstTag).append(posts[0].caption)
         } else if (firstTag == 'magazines') {
             for (var i=0;i<posts.length;i++) { 
+                var active = ''
                 if (i===0) {
                     $('.' + firstTag).data('number', 0)
                     $('.' + firstTag).append(
@@ -23,10 +24,11 @@ function tumblrPostsCallback(data) {
                         posts[i].photos[0].alt_sizes[0].url + 
                         ')"><div class="overlay">' + posts[i].caption + '</div></div>'
                     )
+                    active = ' active'
                 }
                 // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
                 $('.' + firstTag + ' .horizontal').append(
-                    '<div data-number="' + i + '"><span>' +
+                    '<div class="small-cover' + active + '" data-number="' + i + '"><span>' +
                     posts[i].caption +
                     '</span><img src="' + 
                     posts[i].photos[0].alt_sizes[2].url + 
@@ -58,7 +60,7 @@ function tumblrPostsCallback(data) {
             
             for (i=0;i<posts.length;i++) { 
                 // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
-                $('.' + firstTag + ' .image-container').append('<img src="' + posts[i].photos[0].alt_sizes[0].url + '">')
+                $('.' + firstTag + ' .image-container').append('<img src="' + posts[i].photos[0].alt_sizes[1].url + '">')
                 
                 // Take the first tag, assume that's the class name of the content section
                 // Then add all post photos (original size, this might be an issue)
@@ -124,7 +126,9 @@ $(function() {
         }
     })
 
-    $('.magazines .horizontal div').click(function() {
+    $('.magazines .horizontal .small-cover').click(function() {
+        $('.small-cover').removeClass('active')
+        $(this).addClass('active')
         $('.magazines').data('number', $(this).data('number'))
         $('.magazines .cover').css({'background-image': 'url(' + $(this).children('img').data('large') + ')'})
         $('.magazines .cover .overlay').html($(this).children('span').html())
@@ -146,6 +150,10 @@ $(function() {
             $('.magazine').removeClass('open')
             $(this).addClass('open')            
         }
+        $('html, body').animate({
+            scrollTop: $(this).offset().top
+        }, 500);
+
     })
 
     //infinite scroll for scrolling sections
@@ -173,12 +181,12 @@ $(function() {
 
     twitterFetcher.fetch('456957071439577089', 'tweet', 1, true);
     //add perfect scrolling to sections
-    $('.scrolling').perfectScrollbar({suppressScrollX: true})                
+    $('.scrolling').perfectScrollbar({suppressScrollX: true})
     $('.magazines .horizontal').perfectScrollbar({suppressScrollY: true})                
 })
 $(window).load(function() {
     $('.illustrations').height($('.about').height())
-    $('.scrolling, .horizontal').perfectScrollbar('update');
+    $('.scrolling, .magazines .horizontal').perfectScrollbar('update');
 });
 
 var tags = ["magazines", "dujourcom", "elle2010", "about", "elle2011", "elle2011ac", "illustrations"]
@@ -193,9 +201,9 @@ for (var i=0;i<tags.length;i++){
 
 
 document.write(
-    unescape('%3Cscript src="http://api.tumblr.com/v2/blog/meandmissjones.tumblr.com/posts/photo?api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrWidgetCallback"%3E%3C/script%3E')
+    unescape('%3Cscript src="http://api.tumblr.com/v2/blog/meandmissjones.tumblr.com/posts/photo?cb=' + Math.random() + '&api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrWidgetCallback"%3E%3C/script%3E')
 )                
 //https://api.instagram.com/v1/users/5995815/media/recent?callback=instagramWidgetCallback&client_id=58932edd9e9a4d29ab150ab619390876
 document.write(
-    unescape('%3Cscript src="https://api.instagram.com/v1/users/5995815/media/recent?callback=instagramWidgetCallback&client_id=58932edd9e9a4d29ab150ab619390876"%3E%3C/script%3E')
+    unescape('%3Cscript src="https://api.instagram.com/v1/users/5995815/media/recent?cb=' + Math.random() + '&callback=instagramWidgetCallback&client_id=58932edd9e9a4d29ab150ab619390876"%3E%3C/script%3E')
 )                

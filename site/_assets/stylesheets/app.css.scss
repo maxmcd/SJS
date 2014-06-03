@@ -229,12 +229,13 @@ box-sizing: border-box;
     display: table;
 }
 .row {
-    padding-top: 10px;
+    margin-top: 10px;
     &.top {
         height: 812px;
     }
     &.second {
         height: 800px;
+        background-color: white;
     }
     &.third {
         height: auto;
@@ -271,9 +272,6 @@ box-sizing: border-box;
                     margin: 0px;
                 }
             }
-            .mag-header:hover {
-                // margin-bottom: 20px;
-            }
             .mag-header:before {
                 border: solid;
                 border-width: 10px 10px 0 10px;
@@ -286,52 +284,63 @@ box-sizing: border-box;
                 margin-left: -10px;
             }
             &:nth-child(1) .mag-header {
+                background-color: lighten(#3f3f47, 0%);
+                &:before {
+                    border-color: lighten(#3f3f47, 0%) transparent;
+                }
+            }
+            &:nth-child(2) .mag-header {
                 background-color: lighten(#3f3f47, 10%);
                 &:before {
                     border-color: lighten(#3f3f47, 10%) transparent;
                 }
             }
-            &:nth-child(2) .mag-header {
+            &:nth-child(3) .mag-header {
                 background-color: lighten(#3f3f47, 20%);
                 &:before {
                     border-color: lighten(#3f3f47, 20%) transparent;
                 }
             }
-            &:nth-child(3) .mag-header {
+            &:nth-child(4) .mag-header {
                 background-color: lighten(#3f3f47, 30%);
                 &:before {
                     border-color: lighten(#3f3f47, 30%) transparent;
                 }
             }
-            &:nth-child(4) .mag-header {
+            &:nth-child(5) .mag-header {
                 background-color: lighten(#3f3f47, 40%);
                 &:before {
                     border-color: lighten(#3f3f47, 40%) transparent;
                 }
             }
-            &:nth-child(5) .mag-header {
+            &:nth-child(6) .mag-header {
                 background-color: lighten(#3f3f47, 50%);
                 &:before {
                     border-color: lighten(#3f3f47, 50%) transparent;
                 }
             }
-            &:nth-child(6) .mag-header {
+            &:nth-child(7) .mag-header {
                 background-color: lighten(#3f3f47, 60%);
                 &:before {
                     border-color: lighten(#3f3f47, 60%) transparent;
                 }
             }
-            &:nth-child(7) .mag-header {
+            &:nth-child(8) .mag-header {
                 background-color: lighten(#3f3f47, 70%);
                 &:before {
                     border-color: lighten(#3f3f47, 70%) transparent;
                 }
             }
-            &:nth-child(8) .mag-header {
+            &:nth-child(9) .mag-header {
                 background-color: lighten(#3f3f47, 80%);
                 &:before {
                     border-color: lighten(#3f3f47, 80%) transparent;
                 }
+            }
+            .mag-header:hover {
+                // margin-bottom: 20px;
+                background-color: white;
+                border-color: white transparent;
             }
         }
 
@@ -340,7 +349,8 @@ box-sizing: border-box;
 
 
 .row.second .image-container, .row.third .illustrations .image-container {
-    padding: 0 13px;
+    // padding: 0 13px;
+    padding: 0px;
 }
 
 .column {
@@ -360,7 +370,7 @@ box-sizing: border-box;
         height: 100%;
     }
     &.whitebg {
-        background-color: white;
+        // background-color: white;
     }
     img {
         /*max-width: 100%;*/
@@ -371,8 +381,8 @@ box-sizing: border-box;
     &.magazines {
         width: 44.1%;
         .cover {
-            height: 80%;
-            height: calc(100% - 165px);
+            height: 82%;
+            height: calc(100% - 174px);
             width: 100%;
             background-size: cover;
             background-position: 50% 50%;
@@ -398,12 +408,15 @@ box-sizing: border-box;
             text-align: left;
             overflow: hidden;
             white-space: nowrap;
-            height: 165px;
-            div {
+            height: 174px;
+            position: relative;
+            .small-cover {
+                opacity: 0.4;
                 display: inline-block;
                 position: relative;
                 margin-right: 10px;
                 cursor: pointer;
+                padding: 25px 0 5px 0;
                 span {
                     text-align: center;
                     top: 51px;
@@ -412,9 +425,13 @@ box-sizing: border-box;
                     position: absolute;
                 }
             }
+            .small-cover.active {
+                opacity: 1;
+            }
             img {
                 display: inline;
-                width: 130px;
+                width: 110px;
+                margin-bottom: 0px;
             }
         }
     }
@@ -521,11 +538,11 @@ box-sizing: border-box;
 }
 
 .ps-container .ps-scrollbar-y-rail {
-    opacity: 1 !important;
+    opacity: 0.7 !important;
     display: block !important;
 }
 .ps-container .ps-scrollbar-x-rail {
-    opacity: 1 !important;
+    opacity: 0.7 !important;
     display: block !important;
 }
 
@@ -547,7 +564,27 @@ box-sizing: border-box;
 
 // @media (min-width: 1200px) { #page { width: 1100px; } }
 // @media (min-width: 1300px) { #page { width: 1200px; } }
-@media (min-width: 1400px) { #page { width: 1300px; } }
+// @media (min-width: 1400px) { 
+//     #page { 
+//         width: 1300px;
+//     } 
+//     .column {
+//         &.twitter {
+//             height: 263px;
+//         }
+//         &.instagram {
+//             height: 319px;
+//         }
+//         &.tumblr {
+//             height: 320px;
+//         }
+//     }
+//     .row.top {
+//         height: 922px;
+//     }
+// //    263 + 10 + 319 + 10 + 320
+// //    319
+// }
 
 @media (max-width: 768px) { 
     body, html, #page, #posts, .column {
