@@ -12,7 +12,7 @@ function tumblrPostsCallback(data) {
         firstTag = posts[0].tags[0]
 
         if (firstTag == 'about') {
-            $('.' + firstTag).append('<img src="' + posts[0].photos[0].alt_sizes[0].url + '">')
+            $('.' + firstTag).append('<img src="' + posts[0].photos[0].alt_sizes[1].url + '">')
             $('.' + firstTag).append(posts[0].caption)
         } else if (firstTag == 'magazines') {
             for (var i=0;i<posts.length;i++) { 
@@ -21,7 +21,7 @@ function tumblrPostsCallback(data) {
                     $('.' + firstTag).data('number', 0)
                     $('.' + firstTag).append(
                         '<div class="cover" style="background-image: url(' + 
-                        posts[i].photos[0].alt_sizes[0].url + 
+                        posts[i].photos[0].alt_sizes[1].url + 
                         ')"><div class="overlay">' + posts[i].caption + '</div></div>'
                     )
                     active = ' active'
@@ -33,7 +33,7 @@ function tumblrPostsCallback(data) {
                     '</span><img src="' + 
                     posts[i].photos[0].alt_sizes[2].url + 
                     '" data-large="' +
-                    posts[i].photos[0].alt_sizes[0].url + 
+                    posts[i].photos[0].alt_sizes[1].url + 
                     '" data-title="' +
                     '"></div>'
                 )
@@ -43,7 +43,7 @@ function tumblrPostsCallback(data) {
                     '</div>'
                 )
                 for (var n=0;n<posts[i].photos.length;n++) {
-                    console.log(posts[i].photos[n].alt_sizes[0].url)
+                    console.log(posts[i].photos[n].alt_sizes[1].url)
                     $('.magazine.number' + i).append('<img src="' + posts[i].photos[n].alt_sizes[0].url + '">')
                 }
                 
@@ -80,7 +80,7 @@ function tumblrWidgetCallback(data) {
     // for (i=0;i<posts.length;i++) { 
         // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
         $('.tumblr').append(
-            '<a target="_blank" href="' + posts[0].post_url +'"><img src="' + posts[0].photos[0].alt_sizes[0].url + '"></a>'
+            '<a target="_blank" href="' + posts[0].post_url +'"><img src="' + posts[0].photos[0].alt_sizes[1].url + '"></a>'
         )
         // Take the first tag, assume that's the class name of the content section
         // Then add all post photos (original size, this might be an issue)
@@ -143,6 +143,13 @@ $(function() {
         }, 500);
     })
 
+    $('.about_link').click(function() {
+        $('html, body').animate({
+            scrollTop: $('#about').offset().top
+        }, 500);
+        return false
+    })
+
     $('.magazine').click(function() {
         if ($(this).hasClass('open')) {
             $('.magazine').removeClass('open')
@@ -179,7 +186,7 @@ $(function() {
 
     });
 
-    twitterFetcher.fetch('456957071439577089', 'tweet', 1, true);
+    twitterFetcher.fetch('478604713282134016', 'tweet', 1, true);
     //add perfect scrolling to sections
     $('.scrolling').perfectScrollbar({suppressScrollX: true})
     $('.magazines .horizontal').perfectScrollbar({suppressScrollY: true})                
