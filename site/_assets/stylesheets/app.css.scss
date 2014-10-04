@@ -15,27 +15,6 @@ $titlecolor: #ffffff;
     display: none !important;
 }
 
-// @font-face {
-//     font-family: 'DidotDisplay';
-//     src: url(/fonts/234ECA_0_0.eot);
-//     src: local('☺'),url(/fonts/234ECA_0_0.woff) format('woff'),url(/fonts/234ECA_0_0.ttf) format('truetype'),url(/fonts/234ECA_0_0.svg) format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'DharmaGothicC-Bold';
-//     src: url(/fonts/234ECA_1_0.eot);
-//     src: local('☺'),url(/fonts/234ECA_1_0.woff) format('woff'),url(/fonts/234ECA_1_0.ttf) format('truetype'),url(/fonts/234ECA_1_0.svg) format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'DharmaGothicC-Thin';
-//     src: url(/fonts/234ECA_2_0.eot);
-//     src: local('☺'),url(/fonts/234ECA_2_0.woff) format('woff'),url(/fonts/234ECA_2_0.ttf) format('../truetype'),url(/fonts/234ECA_2_0.svg) format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-// }
 @font-face {
     font-family: 'DharmaGothicC-Light';
     src: url(/fonts/234ECA_3_0.eot);
@@ -43,44 +22,6 @@ $titlecolor: #ffffff;
     font-weight: normal;
     font-style: normal;
 }
-// @font-face {
-//     font-family: 'DharmaGothicE-Light';
-//     src: url(/fonts/234ECA_4_0.eot);
-//     src: local('☺'),url(/fonts/234ECA_4_0.woff) format('woff'),url(/fonts/234ECA_4_0.ttf) format('truetype'),url(/fonts/234ECA_4_0.svg) format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'DharmaGothicE-Regular';
-//     src: url(/fonts/257017_0_0.eot);
-//     src: local('☺'),url(/fonts/257017_0_0.woff) format('woff'),url(/fonts/257017_0_0.ttf) format('truetype'),url(/fonts/257017_0_0.svg) format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'DuJourCon';
-//     src: url(/fonts/Dujour-Icons.eot);
-//     src: local('☺'),url(/fonts/Dujour-Icons.woff) format('woff'),url(/fonts/Dujour-Icons.ttf) format('truetype'),url(/fonts/Dujour-Icons.svg) format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'DuJourUI';
-//     src: url(/fonts/DujourUI.eot);
-//     src: local('☺'),url(/fonts/DujourUI.woff) format('woff'),url(/fonts/DujourUI.ttf) format('truetype'),url(/fonts/DujourUI.svg) format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'FrutigerLTStd46LightItalic';
-//     src: url(/fonts/frutigerltstd-lightitalic.eot);
-//     src: local('☺'),url(/fonts/frutigerltstd-lightitalic.eot) format('embedded-opentype'),url(/fonts/frutigerltstd-lightitalic.woff) format('woff'),url(/fonts/frutigerltstd-lightitalic.ttf) format('truetype'),url(/fonts/frutigerltstd-lightitalic.svg#FrutigerLTStd46LightItalic) format('svg');
-// }
-// @font-face {
-//     font-family: 'FrutigerLTStd47LightCondensed';
-//     src: url(/fonts/frutigerltstd-lightcn.eot);
-//     src: local('☺'),url(/fonts/frutigerltstd-lightcn.eot) format('embedded-opentype'),url(/fonts/frutigerltstd-lightcn.woff) format('woff'),url(/fonts/frutigerltstd-lightcn.ttf) format('truetype'),url(/fonts/frutigerltstd-lightcn.svg#FrutigerLTStd47LightCondensed) format('svg');
-// }
 
 #page {
     width: 1000px;
@@ -490,6 +431,12 @@ box-sizing: border-box;
     }
     &.tumblr {
         height: 294px;
+        .img {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
     }
 }
 

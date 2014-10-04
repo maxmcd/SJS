@@ -80,7 +80,8 @@ function tumblrWidgetCallback(data) {
     // for (i=0;i<posts.length;i++) { 
         // $('.' + firstTag).append('<img src="' + posts[i].photos[0].original_size.url + '">')
         $('.tumblr').append(
-            '<a target="_blank" href="' + posts[0].post_url +'"><img src="' + posts[0].photos[0].alt_sizes[1].url + '"></a>'
+            '<a target="_blank" href="' + posts[0].post_url +
+            '"><div class="img" style="background-image: url(' + posts[0].photos[0].alt_sizes[1].url + ')"></a>'
         )
         // Take the first tag, assume that's the class name of the content section
         // Then add all post photos (original size, this might be an issue)
