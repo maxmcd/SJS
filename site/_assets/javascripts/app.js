@@ -6,7 +6,7 @@ var api_endpoint = 'http://api.tumblr.com/v2/blog/stephaniejonesstudio.tumblr.co
 // http://api.tumblr.com/v2/blog/sjstest.tumblr.com/posts/photo?api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback
 function tumblrPostsCallback(data) {
     var i, posts, firstTag
-    console.log(data)
+    // console.log(data)
     posts = data.response.posts
     if (posts.length > 0) {
         firstTag = posts[0].tags[0]
@@ -43,7 +43,7 @@ function tumblrPostsCallback(data) {
                     '</div>'
                 )
                 for (var n=0;n<posts[i].photos.length;n++) {
-                    console.log(posts[i].photos[n].alt_sizes[1].url)
+                    // console.log(posts[i].photos[n].alt_sizes[1].url)
                     $('.magazine.number' + i).append('<img src="' + posts[i].photos[n].alt_sizes[0].url + '">')
                 }
                 
@@ -89,7 +89,7 @@ function tumblrWidgetCallback(data) {
 function instagramWidgetCallback(data) {
     var i, posts
     posts = data.data
-    console.log(posts)
+    // console.log(posts)
     $('.instagram').append('<a target="_blank" href="' + posts[0].link +'"><img src="' + posts[0].images.low_resolution.url + '"></a>')
     // $('.instagram').append('<div class="image-container scrolling">') 
     // for (i=0;i<posts.length;i++) { 
@@ -181,7 +181,7 @@ $(function() {
             $('body').append(
                 unescape('%3Cscript src="' + api_endpoint + 'api_key=boWLAecyT39ADARn6c4QstJYekwpNO1ZmSX5FAjEREDEGQwoP0&callback=tumblrPostsCallback&tag=' + tag + '&offset=' + offset + '"%3E%3C/script%3E')
             ) 
-            console.log(e)                    
+            // console.log(e)                    
         }
 
     });
